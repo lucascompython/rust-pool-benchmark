@@ -1,0 +1,18 @@
+[package]
+name = "mobc-bench"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+mobc = "0.8.5"
+tokio = { version = "1.44.1", features = ["full"] }
+
+[[bench]]
+name = "bench_main"
+harness = false
+
+[profile.release]
+codegen-units = 1 # Allows LLVM to perform better optimization.
+lto = true        # Enables link-time-optimizations.
+panic = "abort"   # Higher performance by disabling panic handlers.
+strip = true      # Ensures debug symbols are removed.
