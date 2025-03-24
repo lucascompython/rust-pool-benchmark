@@ -1,6 +1,6 @@
 # Benchmark Report
 
-> Benchmarked on [GitHub Action: Ubuntu 20.04, CPU 2 Core, RAM 7GB](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources)
+> Benchmarked on Intel_R Core_TM i5-7400T (4) @ 3.00 GHz
 
 ## Index
 
@@ -30,12 +30,12 @@
 | ----------- | ------------ | ------------ |
 | ![p16_w04]  | ![p16_w16]   | ![p16_w64]   |
 
-[p04_w04]: /postgres/results/benchmark(p04_w04).svg
-[p04_w16]: /postgres/results/benchmark(p04_w16).svg
-[p04_w64]: /postgres/results/benchmark(p04_w64).svg
-[p08_w04]: /postgres/results/benchmark(p08_w04).svg
-[p08_w16]: /postgres/results/benchmark(p08_w16).svg
-[p08_w64]: /postgres/results/benchmark(p08_w64).svg
-[p16_w04]: /postgres/results/benchmark(p16_w04).svg
-[p16_w16]: /postgres/results/benchmark(p16_w16).svg
-[p16_w64]: /postgres/results/benchmark(p16_w64).svg
+[p04_w04]: /postgres/results/benchmark_p04_w004.svg
+[p04_w16]: /postgres/results/benchmark_p04_w016.svg
+[p04_w64]: /postgres/results/benchmark_p04_w064.svg
+[p08_w04]: /postgres/results/benchmark_p08_w004.svg
+[p08_w16]: /postgres/results/benchmark_p08_w016.svg
+[p08_w64]: /postgres/results/benchmark_p08_w064.svg
+[p16_w04]: /postgres/results/benchmark_p16_w004.svg
+[p16_w16]: /postgres/results/benchmark_p16_w016.svg
+[p16_w64]: /postgres/results/benchmark_p16_w064.svg
