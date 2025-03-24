@@ -1,5 +1,5 @@
-use sqlx::postgres::{PgPoolOptions, PgRow};
 use sqlx::Row;
+use sqlx::postgres::{PgConnectOptions, PgPoolOptions, PgRow};
 use std::fs::File;
 use std::io::Write;
 use std::time::Instant;
@@ -11,10 +11,14 @@ async fn main() {
     let worker_iters = 10;
     for pool_size in [4, 8, 16] {
         for workers in [4, 16, 64] {
+            let opts = PgConnectOptions::new()
+                .username("benchmark")
+                .password("benchmark")
+                .database("benchmark")
+                .socket("/var/run/postgresql");
             let pool = PgPoolOptions::new()
-                .min_connections(pool_size)
                 .max_connections(pool_size)
-                .connect("postgresql://postgres:postgres@localhost")
+                .connect_with(opts)
                 .await
                 .unwrap();
 
@@ -32,10 +36,9 @@ async fn main() {
                         let pool = pool.clone();
                         tokio::spawn(async move {
                             for _ in 0..worker_iters {
-                                let mut conn = pool.acquire().await.unwrap();
                                 let _int = sqlx::query("SELECT 1")
                                     .try_map(|row: PgRow| row.try_get::<i32, _>(0))
-                                    .fetch_one(&mut conn)
+                                    .fetch_one(&pool)
                                     .await
                                     .unwrap();
                             }

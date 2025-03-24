@@ -30,7 +30,7 @@ impl ManageConnection for IntManager {
 
 #[tokio::main]
 async fn main() {
-    let mut file = File::create("bb8-results.txt").unwrap();
+    let mut file = File::create("bb8-result.txt").unwrap();
     let iters = 1_000;
     let worker_iters = 10;
     for pool_size in [4, 8, 16] {

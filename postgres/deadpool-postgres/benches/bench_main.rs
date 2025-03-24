@@ -11,7 +11,7 @@ async fn main() {
     let worker_iters = 10;
     for pool_size in [4, 8, 16] {
         for workers in [4, 16, 64] {
-            let config = "postgresql://postgres:postgres@localhost".parse().unwrap();
+            let config = "host=/var/run/postgresql user=benchmark dbname=benchmark password=benchmark".parse().unwrap();
             let manager = Manager::from_config(config, NoTls, ManagerConfig::default());
             let pool = Pool::builder(manager).max_size(pool_size).build().unwrap();
 

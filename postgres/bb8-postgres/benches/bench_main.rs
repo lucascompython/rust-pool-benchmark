@@ -13,7 +13,7 @@ async fn main() {
     for pool_size in [4, 8, 16] {
         for workers in [4, 16, 64] {
             let manager = PostgresConnectionManager::new_from_stringlike(
-                "postgresql://postgres:postgres@localhost",
+                "host=/var/run/postgresql user=benchmark dbname=benchmark password=benchmark",
                 NoTls,
             )
             .unwrap();
